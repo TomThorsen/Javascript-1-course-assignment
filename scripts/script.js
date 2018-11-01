@@ -75,5 +75,5 @@ searchBtn.addEventListener('click', function(){
         column4.appendChild(cardCont);
         document.getElementById('cards').appendChild(column4);
     }
-    event.preventDefault();
-})
+    event.preventDefault(); // prevent script from reloading on search submit
+});
