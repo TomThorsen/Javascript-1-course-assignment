@@ -26,7 +26,7 @@ function createCard(result) {
     if (result.card === undefined) { // display error on invalid URL
         cardDetails.innerHTML += "<h2>Invalid Card URL</h2>";
     } else { // if valid URL display card and info
-        cardImage.innerHTML += "<img src=" + result.card.imageUrl + " width='100%'>"
+        cardImage.innerHTML += "<img src=" + result.card.imageUrl + " width='100%'>";
         cardDetails.innerHTML += "<h2>" + result.card.name + "</h2>";
         cardDetails.innerHTML += "<div><b>About:  </b>" + result.card.text + "</div>";
         cardDetails.innerHTML += "<div><b>Rarity: </b>" + result.card.rarity + "</div>";

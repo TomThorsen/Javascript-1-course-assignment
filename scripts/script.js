@@ -2,7 +2,7 @@
 // connect to this api https://api.magicthegathering.io/v1/cards
 
 
-// global var for card object
+// global for card object
 var cardObject;
 
 // get object from JSON
@@ -23,8 +23,8 @@ function createCard(result) {
         column4.className = 'col-sm-4';
 
         cardCont.innerHTML += "<h4>" + result.cards[i].name + "</h4>";
-        cardCont.innerHTML += "<img src=" + result.cards[i].imageUrl + " width='100%'>"
-        cardCont.innerHTML += "<a href='card-specific.html?id=" + result.cards[i].id + "' class='btn btn-success'>View More</a>"
+        cardCont.innerHTML += "<img src=" + result.cards[i].imageUrl + " width='100%'>";
+        cardCont.innerHTML += "<a href='card-specific.html?id=" + result.cards[i].id + "' class='btn btn-success'>View More</a>";
 
         column4.appendChild(cardCont);
         document.getElementById('cards').appendChild(column4);
@@ -35,23 +35,18 @@ function createCard(result) {
 // search button click event and function
 var searchBtn = document.getElementById('searchButton');
 searchBtn.addEventListener('click', function(){
-    var inputField = document.getElementById("search"); // Search input
-    var searchInput = inputField.value.toLowerCase(); // Search Input to lowercase
+    var searchInput = document.getElementById("search").value; // Search input
 
-    // Remove all children of cards
+    // Remove all children of cards div
     var cards = document.getElementById("cards");
     while (cards.hasChildNodes()) {
         cards.removeChild(cards.lastChild);
     }
 
-    // map new array based on search input
-    var search = (userinput) => {
-        return Object.keys(cardObject).filter(key => {
-            return cardObject[key].name.toLowerCase().includes(userinput)
-        })
-            .map(foundKey => ({...cardObject[foundKey], key: foundKey }))
-    };
-    var searchResult = search(searchInput);
+    // Filter cards based on search input using filter, convert to lowercase and includes for matches on part of string.
+    var searchResult = cardObject.filter(function(res) {
+        return res.name.toLowerCase().includes(searchInput.toLowerCase())
+    });
 
     // error if no search match
     if (searchResult.length === 0) {
@@ -69,8 +64,8 @@ searchBtn.addEventListener('click', function(){
         column4.className = 'col-sm-4';
 
         cardCont.innerHTML += "<h4>" + searchResult[i].name + "</h4>";
-        cardCont.innerHTML += "<img src=" + searchResult[i].imageUrl + " width='100%'>"
-        cardCont.innerHTML += "<a href='card-specific.html?id=" + searchResult[i].id + "' class='btn btn-success'>View More</a>"
+        cardCont.innerHTML += "<img src=" + searchResult[i].imageUrl + " width='100%'>";
+        cardCont.innerHTML += "<a href='card-specific.html?id=" + searchResult[i].id + "' class='btn btn-success'>View More</a>";
 
         column4.appendChild(cardCont);
         document.getElementById('cards').appendChild(column4);
