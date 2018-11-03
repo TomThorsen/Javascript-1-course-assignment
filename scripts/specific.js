@@ -8,7 +8,6 @@ var id = getQueryStringValue("id");
 
 // combine link and id
 var idLink = "https://api.magicthegathering.io/v1/cards/" + id;
-console.log(idLink);
 
 // fetch specific card from JSON
 fetch(idLink)

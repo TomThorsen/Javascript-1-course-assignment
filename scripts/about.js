@@ -3,7 +3,7 @@
 
 // Get element and innerHTML content
 var aboutText = document.getElementById('aboutText');
-    aboutTextContent = aboutText.innerHTML;
+var aboutTextContent = aboutText.innerHTML;
 // Replace word Magic with Something
 var replacedAboutText = aboutTextContent.replace(/Magic/g,"Something");
     aboutText.innerHTML = "";
